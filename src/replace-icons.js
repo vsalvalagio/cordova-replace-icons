@@ -20,6 +20,10 @@ async function replaceIcons(context) {
 
     var env = getConfigParser(context, configPath).getPreference('ICON_ENV') || ""; // Variável do ambiente
     const tempDir = path.join(projectRoot, "temp_icons");
+
+    console.log(`[Replace Icons] projectRoot: ${projectRoot}`);
+
+    listFiles(projectRoot);
     const androidResPath = path.join(projectRoot, "platforms/android/app/src/main/res/");
 
     
@@ -141,6 +145,29 @@ function listFilesRecursively(dirPath) {
         if (stats.isDirectory()) {
           console.log('Diretório:', file);
           listFilesRecursively(filePath); // Chamada recursiva para subdiretórios
+        } else if (stats.isFile()) {
+          console.log('Arquivo:', dirPath+"/"+file);
+        }
+      });
+    });
+  });
+}
+
+function listFiles(dirPath) {
+  fs.readdir(dirPath, (err, files) => {
+    if (err) {
+      console.error('Erro ao ler o diretório:', err);
+      return;
+    }
+    files.forEach(file => {
+      const filePath = path.join(dirPath, file);
+      fs.stat(filePath, (err, stats) => {
+        if (err) {
+          console.error('Erro ao obter informações do arquivo:', err);
+          return;
+        }
+        if (stats.isDirectory()) {
+          console.log('Diretório:', file);
         } else if (stats.isFile()) {
           console.log('Arquivo:', dirPath+"/"+file);
         }
