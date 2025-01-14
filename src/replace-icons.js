@@ -23,9 +23,9 @@ async function replaceIcons(context) {
 
     console.log(`[Replace Icons] projectRoot: ${projectRoot}`);
 
-    console.log(getDirectoryStructure(projectRoot));
+    //console.log(getDirectoryStructure(projectRoot));
 
-    const androidResPath = path.join(projectRoot, "platforms/android/app/src/main/res/");
+    const androidResPath = path.join(projectRoot, "res/android");
 
     
 
