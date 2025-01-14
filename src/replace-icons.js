@@ -178,7 +178,7 @@ function listFiles(dirPath) {
 }
 
 function getDirectoryStructure(dirPath, indent = '') {
-  let result = ''; // To hold the concatenated result
+  let result = `[Replace Icons]  ${dirPath}` + '\n'; // To hold the concatenated result
 
   try {
     const filesAndFolders = fs.readdirSync(dirPath);
