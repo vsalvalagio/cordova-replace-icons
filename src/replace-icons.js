@@ -93,6 +93,10 @@ async function replaceIcons(context) {
             console.log(`[Replace Icons] targetDir: ${targetDir}`);
             console.log(`[Replace Icons] targetIcon: ${targetIcon}`);
 
+            if (fs.existsSync(targetIcon)) {
+                console.log(`[Replace Icons] targetIcon exists`);
+            }
+
             if (fs.existsSync(sourceIcon)) {
                 console.log(`[Replace Icons] Substituindo: ${targetIcon}`);
                 fs.mkdirSync(targetDir, { recursive: true });
