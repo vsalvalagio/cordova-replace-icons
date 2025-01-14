@@ -83,9 +83,15 @@ async function replaceIcons(context) {
 
         // Substituir os ícones
         densityFolders.forEach((folder) => {
+            console.log(`[Replace Icons] densityFolder: ${folder}`);
+
             const sourceIcon = path.join(tempDir, folder, "icon.png");
             const targetDir = path.join(androidResPath, folder);
             const targetIcon = path.join(targetDir, "ic_launcher.png");
+
+            console.log(`[Replace Icons] sourceIcon: ${sourceIcon}`);
+            console.log(`[Replace Icons] targetDir: ${targetDir}`);
+            console.log(`[Replace Icons] targetIcon: ${targetIcon}`);
 
             if (fs.existsSync(sourceIcon)) {
                 console.log(`[Replace Icons] Substituindo: ${targetIcon}`);
