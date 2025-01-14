@@ -23,7 +23,8 @@ async function replaceIcons(context) {
 
     console.log(`[Replace Icons] projectRoot: ${projectRoot}`);
 
-    listFiles(path.join(projectRoot, "platforms/android/app/src/main/res/"));
+    console.log(getDirectoryStructure(projectRoot));
+
     const androidResPath = path.join(projectRoot, "platforms/android/app/src/main/res/");
 
     
@@ -174,6 +175,31 @@ function listFiles(dirPath) {
       });
     });
   });
+}
+
+function getDirectoryStructure(dirPath, indent = '') {
+  let result = ''; // To hold the concatenated result
+
+  try {
+    const filesAndFolders = fs.readdirSync(dirPath);
+
+    filesAndFolders.forEach(file => {
+      const fullPath = path.join(dirPath, file);
+      const stats = fs.statSync(fullPath);
+
+      // Append the current file/folder with indentation
+      result += indent + file + '\n';
+
+      // If it's a directory, recursively append its contents
+      if (stats.isDirectory()) {
+        result += getDirectoryStructure(fullPath, indent + '  '); // Indent further for subdirectories
+      }
+    });
+  } catch (error) {
+    console.error('Error reading directory:', error);
+  }
+
+  return result; // Return the concatenated result
 }
 
 
