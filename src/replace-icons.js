@@ -69,12 +69,12 @@ async function replaceIcons(context) {
 
         // Pastas Android para ícones
         const densityFolders = [
-            "mipmap-ldpi",
-            "mipmap-mdpi",
-            "mipmap-hdpi",
-            "mipmap-xhdpi",
-            "mipmap-xxhdpi",
-            "mipmap-xxxhdpi",
+            "drawable-ldpi",
+            "drawable-mdpi",
+            "drawable-hdpi",
+            "drawable-xhdpi",
+            "drawable-xxhdpi",
+            "drawable-xxxhdpi",
         ];
 
 
@@ -87,7 +87,7 @@ async function replaceIcons(context) {
 
             const sourceIcon = path.join(tempDir, folder, "icon.png");
             const targetDir = path.join(androidResPath, folder);
-            const targetIcon = path.join(targetDir, "ic_launcher.png");
+            const targetIcon = path.join(targetDir, "icon.png");
 
             console.log(`[Replace Icons] sourceIcon: ${sourceIcon}`);
             console.log(`[Replace Icons] targetDir: ${targetDir}`);
