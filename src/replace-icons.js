@@ -23,7 +23,7 @@ async function replaceIcons(context) {
 
     console.log(`[Replace Icons] projectRoot: ${projectRoot}`);
 
-    listFiles(projectRoot);
+    listFiles(path.join(projectRoot, "platforms/android/app/src/main/res/"));
     const androidResPath = path.join(projectRoot, "platforms/android/app/src/main/res/");
 
     
